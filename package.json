@@ -1,0 +1,25 @@
+{
+    "name": "hexagn-highlighting",
+    "displayName": "Hexagn syntax highlighting",
+    "description": "Syntax highlighting support for the compiled language called Hexagn",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.69.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "hexagn",
+            "aliases": ["Hexagn", "hexagn"],
+            "extensions": [".hxgn"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "hexagn",
+            "scopeName": "source.hxgn",
+            "path": "./syntaxes/hexagn.tmLanguage.json"
+        }]
+    }
+}
