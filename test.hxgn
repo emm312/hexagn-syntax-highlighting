@@ -1,6 +1,4 @@
-#include <iostream>
-
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+import io;
+int8 main() {
+    println("Hello, World!");
 }
