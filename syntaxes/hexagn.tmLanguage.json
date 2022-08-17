@@ -1,0 +1,58 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Hexagn",
+    "patterns": [
+        { "include": "#keywords" },
+        { "include": "#numeric" },
+        { "include": "#import" },
+        { "include": "#function" },
+        { "include": "#type" },
+        { "include": "#import" },
+        { "include": "#strings" },
+		{ "include": "#operators"}
+    ],
+    "repository": {
+        "function": {
+			
+            "begin": "\\b([_a-zA-Z]\\w*)\\s*\\(",
+            "end": "\\)",
+            "contentName": "function.hexagn",
+            "captures": {
+                "1": { "name": "support.function.hexagn" }
+            },
+			"patterns": [ { "include": "#strings"}, { "include": "#operators"} ]
+        },
+        "numeric": {
+            "name": "constant.numeric.hexagn",
+            "match": "\\b(0x\\h*|0b[01]*|\\d+)\\b"
+        },
+        "type": {
+            "name": "keyword.hexagn",
+            "match": "\\b(u?int(8|16|32)|u?uint(8|uint16|uint32)|string)\\b"
+        },
+        "import": {
+            "name": "keyword.control.hexagn",
+            "match": "\\b(import)\\b"
+        },
+        "keywords": {
+            "name": "keyword.control.hexagn",
+            "match": "\\b(if|else|while|for)\\b"
+        },
+        "strings": {
+            "name": "string.quoted.double.hexagn",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.hexagn",
+                    "match": "\\\\."
+                }
+            ]
+        },
+		"operators": {
+			"name": "keyword.operator.hexagn",
+			"match": "(==|!=|>=|<=|>|<|\\+|-|/|\\*|\\^)"
+		}
+    },
+    "scopeName": "source.hxgn"
+}
