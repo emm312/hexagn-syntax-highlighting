@@ -1,0 +1,12 @@
+by installing this extension, you are required to:
+-rewrite all your projects in hexagn
+-say its the best language
+-listen to emms complete bullshit on how good it is and how pointers are bloat
+-join the hexagn discord at: https://discord.gg/ErK4Mas5Sg
+
+in the case you uninstall the extension, you are still required to follow the terms.
+
+if you use the source code please give credit to the original author.
+
+any other syntax highlighting which highlights the language is required to follow these terms.
+redcmd helped a lot

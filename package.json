@@ -1,8 +1,10 @@
 {
     "name": "hexagn-syntax-highlighting",
+    "repository": "https://github.com/emm312/hexagn-syntax-highlighting",
     "displayName": "Hexagn Syntax Highlighting",
     "description": "syntax highlighting for hexagn, a language compiled to URCL",
-    "version": "0.0.1",
+    "version": "1.0.0",
+    "publisher": "emm312",
     "engines": {
         "vscode": "^1.70.0"
     },

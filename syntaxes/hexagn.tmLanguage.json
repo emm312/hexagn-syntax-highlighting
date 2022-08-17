@@ -9,7 +9,10 @@
         { "include": "#type" },
         { "include": "#import" },
         { "include": "#strings" },
-		{ "include": "#operators"}
+		{ "include": "#operators"},
+        { "include": "#identifiers" },
+        { "include": "#comments" },
+        { "include": "#whitespace" }
     ],
     "repository": {
         "function": {
@@ -36,7 +39,7 @@
         },
         "keywords": {
             "name": "keyword.control.hexagn",
-            "match": "\\b(if|else|while|for)\\b"
+            "match": "\\b(if|else|while|for|return|urcl)\\b"
         },
         "strings": {
             "name": "string.quoted.double.hexagn",
@@ -52,7 +55,7 @@
 		"operators": {
 			"name": "keyword.operator.hexagn",
 			"match": "(==|!=|>=|<=|>|<|\\+|-|/|\\*|\\^)"
-		}
+	    }
     },
     "scopeName": "source.hxgn"
 }
