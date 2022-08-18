@@ -31,7 +31,7 @@
         },
         "type": {
             "name": "keyword.hexagn",
-            "match": "\\b(u?int(8|16|32)|u?uint(8|uint16|uint32)|char|string|float)\\b"
+            "match": "\\b(u?int(8|16|32)|u?uint(8|16|32)|char|string|float)\\b"
         },
         "import": {
             "name": "keyword.control.hexagn",
