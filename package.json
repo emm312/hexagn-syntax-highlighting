@@ -1,5 +1,5 @@
 {
-    "name": "hexagn-syntax-highlighting",
+    "name": "hexagn",
     "repository": "https://github.com/emm312/hexagn-syntax-highlighting",
     "displayName": "Hexagn Syntax Highlighting",
     "description": "syntax highlighting for hexagn, a language compiled to URCL",
@@ -11,6 +11,10 @@
     "categories": [
         "Programming Languages"
     ],
+    "activationEvents": [
+		"onLanguage:hexagn"
+	],
+    "main": "./out/extension.js",
     "contributes": {
         "languages": [{
             "id": "hexagn",
