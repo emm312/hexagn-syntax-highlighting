@@ -62,7 +62,10 @@ const hoverProvider = {
         if (!hover) {
             return undefined;
         }
-        return new vscode.Hover(hover.description, new vscode.MarkdownString(hover.example));
+        const markdownString = new vscode.MarkdownString();
+        markdownString.appendText(hover.description);
+        markdownString.appendCodeblock(hover.example, 'hexagn');
+        return new vscode.Hover(markdownString, wordRange);
     }
 }
 

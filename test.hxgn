@@ -1,5 +1,0 @@
-import io;
-
-int8 main() {
-    println("Hello World");
-}
