@@ -10,5 +10,9 @@
 			"\t\tpass",
 			"}"
 		]
+	},
+	"print": {
+		"prefix": "println",
+		"body": "println($0)"
 	}
 }
