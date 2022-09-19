@@ -1,16 +1,4 @@
 {
-	"switch": {
-		"description": "switch thingy idk",
-		"prefix": "switch",
-		"comment": "comment",
-		"body": [
-			"switch (${1:key}) {",
-			"\tcase ${2:1}:",
-			"\t\t$0",
-			"\t\tpass",
-			"}"
-		]
-	},
 	"print": {
 		"prefix": "println",
 		"body": "println($0)"
