@@ -11,10 +11,23 @@
         { "include": "#strings" },
 		{ "include": "#operators"},
         { "include": "#identifiers" },
-        { "include": "#comments" },
+        { "include": "#comment" },
+        { "include": "#comment-line" },
+        { "include": "#comment-block"},
+        { "include": "#comments"},
         { "include": "#whitespace" }
     ],
     "repository": {
+        "comment-line": {
+			"match": " //.*",
+			"name": "comment"
+		},
+		"comment-block": {
+			"begin": "(/\\*)",
+			"end": "\\*/",
+			"name": "comment",
+			"contentName": "comment"
+		},
         "function": {
 			
             "begin": "\\b([_a-zA-Z]\\w*)\\s*\\(",
@@ -23,7 +36,13 @@
             "captures": {
                 "1": { "name": "support.function.hexagn" }
             },
-			"patterns": [ { "include": "#strings"}, { "include": "#operators"} ]
+			"patterns": [ 
+                { "include": "#strings"}, 
+                { "include": "#operators"},
+                { "include": "#comment" },
+                { "include": "#comment-line" },
+                { "include": "#comment-block"},
+                { "include": "#comments"} ]
         },
         "numeric": {
             "name": "constant.numeric.hexagn",
@@ -31,7 +50,7 @@
         },
         "type": {
             "name": "keyword.hexagn",
-            "match": "\\b(u?int(8|16|32)|u?uint(8|16|32)|char|string|float)\\b"
+            "match": "\\b(u?int(8|16|32)|char|string|float)\\b"
         },
         "import": {
             "name": "keyword.control.hexagn",
@@ -56,6 +75,7 @@
 			"name": "keyword.operator.hexagn",
 			"match": "(==|!=|>=|<=|>|<|\\+|-|/|\\*|\\^)"
 	    }
+        
     },
     "scopeName": "source.hxgn"
 }

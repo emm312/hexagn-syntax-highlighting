@@ -69,13 +69,36 @@ const hoverProvider = {
     }
 }
 
+
+/*
+const SematicTok = {
+    provideDocumentSemanticTokens(document) {
+        const tokensBuilder = new vscode.SemanticTokensBuilder();
+        const varRegex = /((u?int(8|16|32))|(string|char)) [^; *=()]*//*g;
+        const varMatchesWithType = document.getText().match(varRegex);
+        varMatches = [];
+        varMatchesWithType.forEach(match => {
+            varMatches.push(match.split(" ")[1]);
+        });
+        if (varMatchesWithType) {
+            for (const match of varMatches) {
+                console.log(match);
+                const start = document.getText().indexOf(match);
+                const end = start + match.length;
+                tokensBuilder.push(start, end, "variable");
+            }
+        }
+        return tokensBuilder.build();
+    }
+}
+
+*/
 const fileSelector = [
 	{ language:	'hexagn' }
 ];
-
-
 function activate(context) {
     context.subscriptions.push(vscode.languages.registerHoverProvider('hexagn', hoverProvider));
+    //context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(fileSelector, SematicTok));
 }
 
 
