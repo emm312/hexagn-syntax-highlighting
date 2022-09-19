@@ -12,20 +12,29 @@
         "Programming Languages"
     ],
     "activationEvents": [
-		"onLanguage:hexagn"
-	],
+        "onLanguage:hexagn"
+    ],
     "main": "./out/extension.js",
     "contributes": {
-        "languages": [{
-            "id": "hexagn",
-            "aliases": ["Hexagn", "hexagn"],
-            "extensions": ["hxgn"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "hexagn",
-            "scopeName": "source.hxgn",
-            "path": "./syntaxes/hexagn.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "hexagn",
+                "aliases": [
+                    "Hexagn",
+                    "hexagn"
+                ],
+                "extensions": [
+                    "hxgn"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "hexagn",
+                "scopeName": "source.hxgn",
+                "path": "./syntaxes/hexagn.tmLanguage.json"
+            }
+        ]
     }
 }
