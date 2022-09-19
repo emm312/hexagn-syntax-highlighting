@@ -35,6 +35,12 @@
                 "scopeName": "source.hxgn",
                 "path": "./syntaxes/hexagn.tmLanguage.json"
             }
+        ],
+        "snippets": [
+            {
+                "language": "hexagn",
+                "path": "./snippets/hexagn.json"
+            }
         ]
     }
 }
