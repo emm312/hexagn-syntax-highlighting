@@ -3,7 +3,7 @@
     "repository": "https://github.com/emm312/hexagn-syntax-highlighting",
     "displayName": "Hexagn",
     "description": "extension for hexagn, a language compiled to URCL",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "emm312",
     "engines": {
         "vscode": "^1.70.0"
