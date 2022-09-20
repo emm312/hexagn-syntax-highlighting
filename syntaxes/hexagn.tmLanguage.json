@@ -15,7 +15,8 @@
         { "include": "#comment-line" },
         { "include": "#comment-block"},
         { "include": "#comments"},
-        { "include": "#whitespace" }
+        { "include": "#whitespace" },
+        { "include": "#variable"}
     ],
     "repository": {
         "comment-line": {
@@ -74,7 +75,11 @@
 		"operators": {
 			"name": "keyword.operator.hexagn",
 			"match": "(==|!=|>=|<=|>|<|\\+|-|/|\\*|\\^)"
-	    }
+	    },
+        "variable": {
+            "name": "variable.hexagn",
+            "match": "[A-Za-z_]\\w*"
+        }
         
     },
     "scopeName": "source.hxgn"

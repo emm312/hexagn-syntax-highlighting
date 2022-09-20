@@ -48,6 +48,16 @@ const HoverWords = [
         description: "imports a library",
         example: "import io;"
     },
+    {
+        symbol: "if",
+        description: "if statement",
+        example: "if (i == 0) {"
+    },
+    {
+        symbol: "while",
+        description: "while loop",
+        example: "while (i < 10) {"
+    }
 
 ]
 
@@ -98,7 +108,6 @@ const fileSelector = [
 ];
 function activate(context) {
     context.subscriptions.push(vscode.languages.registerHoverProvider('hexagn', hoverProvider));
-    //context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(fileSelector, SematicTok));
 }
 
 
