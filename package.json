@@ -3,7 +3,7 @@
     "repository": "https://github.com/emm312/hexagn-syntax-highlighting",
     "displayName": "Hexagn",
     "description": "extension for hexagn, a language compiled to URCL",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "publisher": "emm312",
     "engines": {
         "vscode": "^1.70.0"
@@ -34,6 +34,12 @@
                 "language": "hexagn",
                 "scopeName": "source.hxgn",
                 "path": "./syntaxes/hexagn.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "hexagn",
+                "path": "./snippets/hexagn.json"
             }
         ]
     }
