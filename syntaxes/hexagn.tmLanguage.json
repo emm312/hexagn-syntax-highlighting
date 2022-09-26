@@ -2,6 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "Hexagn",
     "patterns": [
+        { "include": "#disable-textmate" },
         { "include": "#keywords" },
         { "include": "#numeric" },
         { "include": "#import" },
@@ -19,6 +20,10 @@
         { "include": "#variable"}
     ],
     "repository": {
+        "disable-textmate": {
+			"begin": "(?i)^\\s*//\\s*TextMate\\s*:?\\s*Disable\\s*$",
+			"end": "(?i)^\\s*//\\s*TextMate\\s*:?\\s*Enable\\s*$"
+		},
         "comment-line": {
 			"match": " //.*",
 			"name": "comment"
