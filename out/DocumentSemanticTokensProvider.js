@@ -44,6 +44,7 @@ const tokenConversion = {
 	identifier: 7,
 	
 	comment_block: 17,
+	comments: 17,
 	
 	aqua: 6,
 	blue: 15,
@@ -69,6 +70,7 @@ const tokenConversion = {
 	import: 19,
 	keyword: 19,
 	func_name: 13,
+	func_call: 13,
 	type: 15,
 	header: 16,
 	"instruction.unknown": 15,
