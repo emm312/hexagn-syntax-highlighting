@@ -2,114 +2,49 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
 
-const HoverWords = [
-    {
-        symbol: "int8",
-        description: "8-bit signed integer",
-        example: "int8 x = 1;"
-    },
-    {
-        symbol: "int16",
-        description: "16-bit signed integer",
-        example: "int16 x = 1;"
-    },
-    {
-        symbol: "int32",
-        description: "32-bit signed integer",
-        example: "int32 x = 1;"
-    },
-    {
-        symbol: "uint8",
-        description: "8-bit unsigned integer",
-        example: "uint8 x = 1;"
-    },
-    {
-        symbol: "uint16",
-        description: "16-bit unsigned integer",
-        example: "uint16 x = 1;"
-    },
-    {
-        symbol: "uint32",
-        description: "32-bit unsigned integer",
-        example: "uint32 x = 1;"
-    },
-    {
-        symbol: "string",
-        description: "string",
-        example: "string x = \"Hello World\";"
-    },
-    {
-        symbol: "char",
-        description: "character",
-        example: "char x = 'a';"
-    },
-    {
-        symbol: "import",
-        description: "imports a library",
-        example: "import io;"
-    },
-    {
-        symbol: "if",
-        description: "if statement",
-        example: "if (i == 0) {"
-    },
-    {
-        symbol: "while",
-        description: "while loop",
-        example: "while (i < 10) {"
-    }
+const DocumentSemanticTokensProvider = require("./DocumentSemanticTokensProvider.js").DocumentSemanticTokensProvider
+const SemanticTokensLegend = require("./DocumentSemanticTokensProvider.js").SemanticTokensLegend
+const DocumentSymbolProvider = require("./DocumentSymbolProvider.js").DocumentSymbolProvider
+const HoverProvider = require("./HoverProvider.js").HoverProvider
 
-]
+function nodeToVscodeRange(node) {
+	const startPosition = node.startPosition
+	const endPosition = node.endPosition
 
-const hoverProvider = {
-    provideHover(document, position, token) {
-        const wordRange = document.getWordRangeAtPosition(position);
-        if (!wordRange) {
-            return undefined;
-        }
-        const word = document.getText(wordRange);
-        const hover = HoverWords.find(w => w.symbol === word);
-        if (!hover) {
-            return undefined;
-        }
-        const markdownString = new vscode.MarkdownString();
-        markdownString.appendText(hover.description);
-        markdownString.appendCodeblock(hover.example, 'hexagn');
-        return new vscode.Hover(markdownString, wordRange);
-    }
+	return new vscode.Range(
+		startPosition.row,
+		startPosition.column,
+		endPosition.row,
+		endPosition.column
+	)
 }
 
 
-/*
-const SematicTok = {
-    provideDocumentSemanticTokens(document) {
-        const tokensBuilder = new vscode.SemanticTokensBuilder();
-        const varRegex = /((u?int(8|16|32))|(string|char)) [^; *=()]*//*g;
-        const varMatchesWithType = document.getText().match(varRegex);
-        varMatches = [];
-        varMatchesWithType.forEach(match => {
-            varMatches.push(match.split(" ")[1]);
-        });
-        if (varMatchesWithType) {
-            for (const match of varMatches) {
-                console.log(match);
-                const start = document.getText().indexOf(match);
-                const end = start + match.length;
-                tokensBuilder.push(start, end, "variable");
-            }
-        }
-        return tokensBuilder.build();
-    }
-}
-
-*/
-const fileSelector = [
+const DocumentSelector = [
 	{ language:	'hexagn' }
 ];
-function activate(context) {
-    context.subscriptions.push(vscode.languages.registerHoverProvider('hexagn', hoverProvider));
+async function activate(context) {
+	// vscode.window.showInformationMessage(JSON.stringify())
+	vscode.window.showInformationMessage(JSON.stringify("activate"))
+
+	const parseTreeExtension = vscode.extensions.getExtension("pokey.parse-tree")
+	if (parseTreeExtension == null)
+		throw new Error("Depends on pokey.parse-tree extension")
+	exports.parseTreeExtension = parseTreeExtension
+
+	const { registerLanguage } = await parseTreeExtension.activate() // functions() {...}; must be async!
+	const wasm = context.extensionPath + '\\out\\tree-sitter\\tree-sitter-hexagn.wasm'
+	registerLanguage('hexagn', wasm)
+
+	vscode.window.showInformationMessage(JSON.stringify("activate2"))
+
+
+	context.subscriptions.push(vscode.languages.registerHoverProvider(DocumentSelector, HoverProvider)) // mouse hovers
+	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(DocumentSelector, DocumentSymbolProvider)) // breadcrumbs
+	context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(DocumentSelector, DocumentSemanticTokensProvider, SemanticTokensLegend)) // syntax highlighting
 }
 
+exports.nodeToVscodeRange = nodeToVscodeRange
 
 exports.activate = activate;
 function deactivate() { }
