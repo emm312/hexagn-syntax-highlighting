@@ -25,7 +25,6 @@ const DocumentSelector = [
 ];
 async function activate(context) {
 	// vscode.window.showInformationMessage(JSON.stringify())
-	vscode.window.showInformationMessage(JSON.stringify("activate"))
 
 	const parseTreeExtension = vscode.extensions.getExtension("pokey.parse-tree")
 	if (parseTreeExtension == null)
@@ -35,8 +34,6 @@ async function activate(context) {
 	const { registerLanguage } = await parseTreeExtension.activate() // functions() {...}; must be async!
 	const wasm = context.extensionPath + '\\out\\tree-sitter\\tree-sitter-hexagn.wasm'
 	registerLanguage('hexagn', wasm)
-
-	vscode.window.showInformationMessage(JSON.stringify("activate2"))
 
 
 	context.subscriptions.push(vscode.languages.registerHoverProvider(DocumentSelector, HoverProvider)) // mouse hovers
