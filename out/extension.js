@@ -26,19 +26,11 @@ const DocumentSelector = [
 async function activate(context) {
 	// vscode.window.showInformationMessage(JSON.stringify())
 
-	const parseTreeExtension = vscode.extensions.getExtension("pokey.parse-tree")
-	if (parseTreeExtension == null)
-		throw new Error("Depends on pokey.parse-tree extension")
-	exports.parseTreeExtension = parseTreeExtension
-
-	const { registerLanguage } = await parseTreeExtension.activate() // functions() {...}; must be async!
-	const wasm = context.extensionPath + '\\out\\tree-sitter\\tree-sitter-hexagn.wasm'
-	registerLanguage('hexagn', wasm)
+	
 
 
 	context.subscriptions.push(vscode.languages.registerHoverProvider(DocumentSelector, HoverProvider)) // mouse hovers
-	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(DocumentSelector, DocumentSymbolProvider)) // breadcrumbs
-	context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider(DocumentSelector, DocumentSemanticTokensProvider, SemanticTokensLegend)) // syntax highlighting
+	context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(DocumentSelector, DocumentSymbolProvider)) // breadcrumbsW
 }
 
 exports.nodeToVscodeRange = nodeToVscodeRange

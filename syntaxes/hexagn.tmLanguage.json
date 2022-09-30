@@ -1,6 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "Hexagn",
+    "scopeName": "source.hxgn",
     "patterns": [
         { "include": "#disable-textmate" },
         { "include": "#keywords" },
@@ -10,45 +11,43 @@
         { "include": "#type" },
         { "include": "#import" },
         { "include": "#strings" },
-		{ "include": "#operators"},
+        { "include": "#operators" },
         { "include": "#identifiers" },
         { "include": "#comment" },
         { "include": "#comment-line" },
-        { "include": "#comment-block"},
-        { "include": "#comments"},
+        { "include": "#comment-block" },
+        { "include": "#comments" },
         { "include": "#whitespace" },
-        { "include": "#variable"}
+        { "include": "#variable" }
     ],
     "repository": {
         "disable-textmate": {
-			"begin": "(?i)^\\s*//\\s*TextMate\\s*:?\\s*Disable\\s*$",
-			"end": "(?i)^\\s*//\\s*TextMate\\s*:?\\s*Enable\\s*$"
-		},
+            "begin": "(?i)^\\s*//\\s*TextMate\\s*:?\\s*Disable\\s*$",
+            "end": "(?i)^\\s*//\\s*TextMate\\s*:?\\s*Enable\\s*$"
+        },
         "comment-line": {
-			"match": " //.*",
-			"name": "comment"
-		},
-		"comment-block": {
-			"begin": "(/\\*)",
-			"end": "\\*/",
-			"name": "comment",
-			"contentName": "comment"
-		},
+            "match": " //.*",
+            "name": "comment"
+        },
+        "comment-block": {
+            "begin": "(/\\*)",
+            "end": "\\*/",
+            "name": "comment",
+            "contentName": "comment"
+        },
         "function": {
-			
             "begin": "\\b([_a-zA-Z]\\w*)\\s*\\(",
             "end": "\\)",
             "contentName": "function.hexagn",
-            "captures": {
-                "1": { "name": "support.function.hexagn" }
-            },
-			"patterns": [ 
-                { "include": "#strings"}, 
-                { "include": "#operators"},
+            "captures": { "1": { "name": "support.function.hexagn" } },
+            "patterns": [
+                { "include": "#strings" },
+                { "include": "#operators" },
                 { "include": "#comment" },
                 { "include": "#comment-line" },
-                { "include": "#comment-block"},
-                { "include": "#comments"} ]
+                { "include": "#comment-block" },
+                { "include": "#comments" }
+            ]
         },
         "numeric": {
             "name": "constant.numeric.hexagn",
@@ -77,15 +76,13 @@
                 }
             ]
         },
-		"operators": {
-			"name": "keyword.operator.hexagn",
-			"match": "(==|!=|>=|<=|>|<|\\+|-|/|\\*|\\^)"
-	    },
+        "operators": {
+            "name": "keyword.operator.hexagn",
+            "match": "(==|!=|>=|<=|>|<|\\+|-|/|\\*|\\^)"
+        },
         "variable": {
             "name": "variable.hexagn",
             "match": "[A-Za-z_]\\w*"
         }
-        
-    },
-    "scopeName": "source.hxgn"
+    }
 }
