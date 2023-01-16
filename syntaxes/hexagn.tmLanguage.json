@@ -63,7 +63,7 @@
         },
         "keywords": {
             "name": "keyword.control.hexagn",
-            "match": "\\b(if|else|while|for|return|urcl)\\b"
+            "match": "\\b(if|else|while|for|return|urcl|extern|pub)\\b"
         },
         "strings": {
             "name": "string.quoted.double.hexagn",
